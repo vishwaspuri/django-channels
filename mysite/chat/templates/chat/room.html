@@ -11,15 +11,15 @@
 		<input id="chat-message-submit" type="button" value="Send"/>
 	</body>
 	<script>
-		var roomName={{ room_name_json }};
+		var roomName={{  room_name_json  }};
 		var chatSocket=new WebSocket(
-			'ws://'+window.location.host +
+			'ws://'+window.location.host+
 			'/ws/chat/'+roomName+'/');
 			
 		chatSocket.onMessage=function(e) {
 			var data=JSON.parse(e.data);
 			var message=data['message'];
-			document.querySelector('#chat-log").value+=(message+'\n');
+			document.querySelector("#chat-log").value+=(message+'\n');
 		};
 		chatSocket.onclose=function(e){
 			console.error('Chat socket closed unexpectedly');
